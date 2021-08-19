@@ -46,6 +46,7 @@
 (load-theme 'tango-dark)
 (set-face-attribute 'region nil :background "green4")
 (add-to-list 'default-frame-alist '(fullscreen . maximized))
+(setq blink-cursor-blinks -1) ; blink forever
 
 ;;; Custom functions ;;;
 
