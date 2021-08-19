@@ -1,5 +1,9 @@
 * README
 
-  Personal Emacs configuration.
+  Personal Emacs configuration for Emacs 28.
+
+  #+begin_src shell
+brew install emacs-plus@28 --with-xwidgets --with-nobu417-big-sur-icon --with-native-comp
+  #+end_src
   
   See [[file:init.el]]
