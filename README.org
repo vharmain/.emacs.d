@@ -1,0 +1,5 @@
+* README
+
+  Personal Emacs configuration.
+  
+  See [[file:init.el]]
