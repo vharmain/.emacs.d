@@ -83,6 +83,11 @@ transpositions to execute in sequence."
 (global-set-key (kbd "C-_") 'undo-only)
 (global-set-key (kbd "M-_") 'undo-redo)
 
+(use-package unicode-fonts
+   :ensure t
+   :config
+    (unicode-fonts-setup))
+
 ;;; Global utils ;;;
 
 (use-package projectile
