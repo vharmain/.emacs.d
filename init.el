@@ -243,9 +243,6 @@ Parse cfn-nag OUTPUT for cfn-nag CHECKER on a given BUFFER"
    (php-mode . lsp))
   :bind-keymap ("H-l" . lsp-command-map)
   :config
-  (setenv "PATH" (concat
-                   "/usr/local/bin" path-separator
-                   (getenv "PATH")))
   (dolist (m '(clojure-mode
                clojurec-mode
                clojurescript-mode
