@@ -69,6 +69,7 @@ transpositions to execute in sequence."
 
 (setq mac-command-modifier 'meta)
 (setq mac-option-modifier 'super)
+(setq ns-function-modifier 'hyper)
 (setq ns-right-alternate-modifier nil)
 
 (global-set-key (kbd "C-s-n") (lambda () (interactive) (forward-line 5)))
@@ -239,6 +240,7 @@ Parse cfn-nag OUTPUT for cfn-nag CHECKER on a given BUFFER"
    (clojurec-mode . lsp)
    (clojurescript-mode . lsp)
    (php-mode . lsp))
+  :bind-keymap ("H-l" . lsp-command-map)
   :config
   (setenv "PATH" (concat
                    "/usr/local/bin" path-separator
