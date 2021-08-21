@@ -88,6 +88,17 @@ transpositions to execute in sequence."
    :config
     (unicode-fonts-setup))
 
+(use-package flyspell
+  :ensure t
+  :bind
+  (("C-M-;" . flyspell-correct-word-before-point))
+  :hook
+  ((prog-mode . flyspell-prog-mode)
+   (org-mode . flyspell-mode)
+   (markdown-mode . flyspell-mode))
+  :config
+  (unicode-fonts-setup))
+
 ;;; Global utils ;;;
 
 (use-package projectile
