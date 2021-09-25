@@ -6,25 +6,6 @@
 ;; stay near to vanilla Emacs and add minimal set of extra packages
 ;; and configuration based on a) need and b) personal preference.
 
-;;; Junk that needs to be installed outside Emacs
-
-;; # Cloudformation
-;; brew install ruby brew-gem cfn-lint
-;; brew gem install cfn-nag
-;;
-;; # Clojure
-;; brew install clojure/tools/clojure
-;; brew install borkdude/brew/clj-kondo
-;; brew install clojure-lsp/brew/clojure-lsp-native
-;; 
-;; # Javascript
-;; brew install node npm
-;; npm install -g eslint prettier
-;;
-;; # PHP
-;; brew install php composer
-;; npm i intelephense -g
-
 ;;; Code:
 
 ;;; Package management ;;;

@@ -3,7 +3,26 @@
   Personal Emacs configuration for Emacs 28.
 
   #+begin_src shell
-brew install emacs-plus@28 --with-xwidgets --with-nobu417-big-sur-icon --with-native-comp
+    brew install emacs-plus@28 --with-xwidgets --with-nobu417-big-sur-icon --with-native-comp
+
+    # Junk that needs to be installed outside Emacs
+
+    # Cloudformation
+    brew install ruby brew-gem cfn-lint
+    brew gem install cfn-nag
+
+    # Clojure
+    brew install clojure/tools/clojure
+    brew install borkdude/brew/clj-kondo
+    brew install clojure-lsp/brew/clojure-lsp-native
+
+    # JavaScript
+    brew install node npm
+    npm install -g eslint prettier
+
+    # PHP
+    brew install php composer
+    npm i intelephense -g
   #+end_src
   
   See [[file:init.el]]
