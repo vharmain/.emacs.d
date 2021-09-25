@@ -58,6 +58,7 @@ transpositions to execute in sequence."
 (global-set-key (kbd "C-s-p") (lambda () (interactive) (forward-line -5)))
 (global-set-key (kbd "s-n") nil)
 (global-set-key (kbd "C-x C-o") 'crux-transpose-windows)
+(global-set-key (kbd "C-x M-o") 'previous-window-any-frame)
 (global-set-key (kbd "C-c C-l") 'xwidget-webkit-browse-url)
 
 ;; Linear undo & redo (emacs28)
