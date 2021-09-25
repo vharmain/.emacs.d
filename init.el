@@ -211,8 +211,7 @@ Parse cfn-nag OUTPUT for cfn-nag CHECKER on a given BUFFER"
 
 (use-package js2-mode
   :ensure t
-  :mode
-  ("\\.js\\'" . 'js2-mode))
+  :mode ("\\.js\\'" . 'js2-mode))
 
 (use-package prettier-js
   :ensure t
