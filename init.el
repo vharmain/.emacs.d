@@ -64,6 +64,10 @@ transpositions to execute in sequence."
 (global-set-key (kbd "C-_") 'undo-only)
 (global-set-key (kbd "M-_") 'undo-redo)
 
+(show-paren-mode t)
+(delete-selection-mode t)
+(projectile-mode t)
+
 (use-package unicode-fonts
    :ensure t
    :config
