@@ -29,6 +29,11 @@
 (add-to-list 'default-frame-alist '(fullscreen . maximized))
 (setq blink-cursor-blinks -1) ; blink forever
 
+(use-package unicode-fonts
+   :ensure t
+   :config
+    (unicode-fonts-setup))
+
 ;;; Custom functions ;;;
 
 ;; Copied from https://github.com/bbatsov/crux/blob/master/crux.el
@@ -69,11 +74,6 @@ transpositions to execute in sequence."
 (delete-selection-mode t)
 (projectile-mode t)
 
-(use-package unicode-fonts
-   :ensure t
-   :config
-    (unicode-fonts-setup))
-
 (use-package flyspell
   :ensure t
   :bind
@@ -81,9 +81,7 @@ transpositions to execute in sequence."
   :hook
   ((prog-mode . flyspell-prog-mode)
    (org-mode . flyspell-mode)
-   (markdown-mode . flyspell-mode))
-  :config
-  (unicode-fonts-setup))
+   (markdown-mode . flyspell-mode)))
 
 ;;; Global utils ;;;
 
@@ -245,6 +243,8 @@ Parse cfn-nag OUTPUT for cfn-nag CHECKER on a given BUFFER"
    (php-mode . lsp))
   :bind-keymap ("H-l" . lsp-command-map)
   :config
+  (setq lsp-enable-on-type-formatting nil)
+  (setq lsp-enable-indentation nil)
   (dolist (m '(clojure-mode
                clojurec-mode
                clojurescript-mode
