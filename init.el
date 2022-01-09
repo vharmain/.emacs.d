@@ -74,6 +74,10 @@ transpositions to execute in sequence."
 (delete-selection-mode t)
 (projectile-mode t)
 
+;; Store all backup and autosave files in the tmp dir
+(setq backup-directory-alist `((".*" . ,temporary-file-directory)))
+(setq auto-save-file-name-transforms `((".*" ,temporary-file-directory t)))
+
 (use-package flyspell
   :ensure t
   :bind
@@ -109,6 +113,9 @@ transpositions to execute in sequence."
   :ensure t
   :config
   (global-company-mode t))
+
+(use-package rainbow-mode
+  :ensure t)
 
 ;;; Org ;;;
 
@@ -257,3 +264,16 @@ Parse cfn-nag OUTPUT for cfn-nag CHECKER on a given BUFFER"
 
 (provide 'init.el)
 ;;; init.el ends here
+(custom-set-variables
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(package-selected-packages
+   '(rainbow-mode unicode-fonts web-mode use-package smartparens projectile prettier-js php-mode magit lsp-ui json-mode js2-mode flycheck-clj-kondo flycheck-cfn company clj-refactor cfn-mode)))
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ )
