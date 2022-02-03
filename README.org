@@ -3,10 +3,13 @@
   Personal Emacs configuration for Emacs 28.
 
   #+begin_src shell
+    brew tap d12frosted/emacs-plus
     brew install emacs-plus@28 --with-xwidgets --with-nobu417-big-sur-icon --with-native-comp
 
     # Junk that needs to be installed outside Emacs
-
+    # ispell
+    brew install ispell
+    
     # Cloudformation
     brew install ruby brew-gem cfn-lint
     brew gem install cfn-nag
