@@ -49,6 +49,36 @@ transpositions to execute in sequence."
     (set-window-buffer this-win (current-buffer))
     (set-window-buffer (selected-window) this-buffer)))
 
+;;; Global utils ;;;
+
+(use-package projectile
+  :ensure t
+  :bind-keymap ("C-c p" . projectile-command-map))
+
+(use-package magit
+  :ensure t)
+
+(use-package flycheck
+  :ensure t
+  :init (global-flycheck-mode))
+
+(use-package smartparens
+  :ensure t
+  :bind
+  (("C-<right>" . 'sp-forward-slurp-sexp)
+   ("C-<left>" . 'sp-forward-barf-sexp))
+  :config
+  (require 'smartparens-config)
+  (smartparens-global-strict-mode))
+
+(use-package company
+  :ensure t
+  :config
+  (global-company-mode t))
+
+(use-package rainbow-mode
+  :ensure t)
+
 ;;; Global configs and keybindings ;;;
 
 ;; Never tabs, always spaces
@@ -86,36 +116,6 @@ transpositions to execute in sequence."
   ((prog-mode . flyspell-prog-mode)
    (org-mode . flyspell-mode)
    (markdown-mode . flyspell-mode)))
-
-;;; Global utils ;;;
-
-(use-package projectile
-  :ensure t
-  :bind-keymap ("C-c p" . projectile-command-map))
-
-(use-package magit
-  :ensure t)
-
-(use-package flycheck
-  :ensure t
-  :init (global-flycheck-mode))
-
-(use-package smartparens
-  :ensure t
-  :bind
-  (("C-<right>" . 'sp-forward-slurp-sexp)
-   ("C-<left>" . 'sp-forward-barf-sexp))
-  :config
-  (require 'smartparens-config)
-  (smartparens-global-strict-mode))
-
-(use-package company
-  :ensure t
-  :config
-  (global-company-mode t))
-
-(use-package rainbow-mode
-  :ensure t)
 
 ;;; Org ;;;
 
