@@ -49,35 +49,27 @@ transpositions to execute in sequence."
     (set-window-buffer this-win (current-buffer))
     (set-window-buffer (selected-window) this-buffer)))
 
-;;; Global utils ;;;
+(defun jet-pretty-edn ()
+  (interactive)
+  (shell-command-on-region
+   (region-beginning)
+   (region-end)
+   "jet --pretty --edn-reader-opts '{:default tagged-literal}'"
+   (current-buffer)
+   t
+   "*jet error buffer*"
+   t))
 
-(use-package projectile
-  :ensure t
-  :bind-keymap ("C-c p" . projectile-command-map))
-
-(use-package magit
-  :ensure t)
-
-(use-package flycheck
-  :ensure t
-  :init (global-flycheck-mode))
-
-(use-package smartparens
-  :ensure t
-  :bind
-  (("C-<right>" . 'sp-forward-slurp-sexp)
-   ("C-<left>" . 'sp-forward-barf-sexp))
-  :config
-  (require 'smartparens-config)
-  (smartparens-global-strict-mode))
-
-(use-package company
-  :ensure t
-  :config
-  (global-company-mode t))
-
-(use-package rainbow-mode
-  :ensure t)
+(defun jet-json->pretty-edn ()
+  (interactive)
+  (shell-command-on-region
+   (region-beginning)
+   (region-end)
+   "jet --from json --keywordize --pretty --edn-reader-opts '{:default tagged-literal}'"
+   (current-buffer)
+   t
+   "*jet error buffer*"
+   t))
 
 ;;; Global configs and keybindings ;;;
 
@@ -108,6 +100,24 @@ transpositions to execute in sequence."
 (setq backup-directory-alist `((".*" . ,temporary-file-directory)))
 (setq auto-save-file-name-transforms `((".*" ,temporary-file-directory t)))
 
+(use-package vertico
+  :ensure t
+  :init
+  (vertico-mode)
+
+  ;; Different scroll margin
+  ;; (setq vertico-scroll-margin 0)
+
+  ;; Show more candidates
+  ;; (setq vertico-count 20)
+
+  ;; Grow and shrink the Vertico minibuffer
+  ;; (setq vertico-resize t)
+
+  ;; Optionally enable cycling for `vertico-next' and `vertico-previous'.
+  ;; (setq vertico-cycle t)
+  )
+
 (use-package flyspell
   :ensure t
   :bind
@@ -116,6 +126,39 @@ transpositions to execute in sequence."
   ((prog-mode . flyspell-prog-mode)
    (org-mode . flyspell-mode)
    (markdown-mode . flyspell-mode)))
+
+;;; Global utils ;;;
+
+(use-package projectile
+  :ensure t
+  :bind-keymap ("C-c p" . projectile-command-map))
+
+(use-package magit
+  :ensure t)
+
+(use-package code-review
+  :ensure t)
+
+(use-package flycheck
+  :ensure t
+  :init (global-flycheck-mode))
+
+(use-package smartparens
+  :ensure t
+  :bind
+  (("C-<right>" . 'sp-forward-slurp-sexp)
+   ("C-<left>" . 'sp-forward-barf-sexp))
+  :config
+  (require 'smartparens-config)
+  (smartparens-global-strict-mode))
+
+(use-package company
+  :ensure t
+  :config
+  (global-company-mode t))
+
+(use-package rainbow-mode
+  :ensure t)
 
 ;;; Org ;;;
 
@@ -197,7 +240,14 @@ Parse cfn-nag OUTPUT for cfn-nag CHECKER on a given BUFFER"
   (require 'flycheck-clj-kondo))
 
 (use-package cider
-  :ensure t)
+  :ensure t
+  :config
+  (setq cider-clojure-cli-global-options "-J-XX:-OmitStackTraceInFastThrow"))
+
+(use-package html-to-hiccup
+  :ensure t
+  :config
+  (define-key clojure-mode-map (kbd "H-h") 'html-to-hiccup-convert-region))
 
 ;; See also section 'LSP'
 
@@ -270,7 +320,7 @@ Parse cfn-nag OUTPUT for cfn-nag CHECKER on a given BUFFER"
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
-   '(rainbow-mode unicode-fonts web-mode use-package smartparens projectile prettier-js php-mode magit lsp-ui json-mode js2-mode flycheck-clj-kondo flycheck-cfn company clj-refactor cfn-mode)))
+   '(html-to-hiccup vertico code-review rainbow-mode unicode-fonts web-mode use-package smartparens projectile prettier-js php-mode magit lsp-ui json-mode js2-mode flycheck-clj-kondo flycheck-cfn company clj-refactor cfn-mode)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.

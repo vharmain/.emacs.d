@@ -18,6 +18,7 @@
     brew install clojure/tools/clojure
     brew install borkdude/brew/clj-kondo
     brew install clojure-lsp/brew/clojure-lsp-native
+    brew install borkdude/brew/jet
 
     # JavaScript
     brew install node npm
