@@ -249,6 +249,12 @@ Parse cfn-nag OUTPUT for cfn-nag CHECKER on a given BUFFER"
   :config
   (define-key clojure-mode-map (kbd "H-h") 'html-to-hiccup-convert-region))
 
+(use-package neil
+  :ensure t
+  :config 
+  (setq neil-prompt-for-version-p nil
+        neil-inject-dep-to-project-p t))
+
 ;; See also section 'LSP'
 
 ;;; Markdown ;;;
@@ -307,3 +313,16 @@ Parse cfn-nag OUTPUT for cfn-nag CHECKER on a given BUFFER"
 
 (provide 'init.el)
 ;;; init.el ends here
+(custom-set-variables
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(package-selected-packages
+   '(neil html-to-hiccup vertico code-review rainbow-mode unicode-fonts web-mode use-package smartparens projectile prettier-js php-mode magit lsp-ui json-mode js2-mode flycheck-clj-kondo flycheck-cfn company clj-refactor cfn-mode)))
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ )
