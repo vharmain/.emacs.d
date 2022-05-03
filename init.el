@@ -281,12 +281,6 @@ Parse cfn-nag OUTPUT for cfn-nag CHECKER on a given BUFFER"
 (use-package web-mode
   :ensure t)
 
-;;; PHP ;;;
-
-(use-package php-mode
-  :ensure t
-  :mode (("\\.phtml\\'" . php-mode)))
-
 ;; See also section 'LSP'
 
 ;;; LSP ;;;
@@ -296,8 +290,7 @@ Parse cfn-nag OUTPUT for cfn-nag CHECKER on a given BUFFER"
   :hook
   ((clojure-mode . lsp)
    (clojurec-mode . lsp)
-   (clojurescript-mode . lsp)
-   (php-mode . lsp))
+   (clojurescript-mode . lsp))
   :bind-keymap ("H-l" . lsp-command-map)
   :config
   (setq lsp-enable-on-type-formatting nil)
@@ -314,16 +307,3 @@ Parse cfn-nag OUTPUT for cfn-nag CHECKER on a given BUFFER"
 
 (provide 'init.el)
 ;;; init.el ends here
-(custom-set-variables
- ;; custom-set-variables was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(package-selected-packages
-   '(html-to-hiccup vertico code-review rainbow-mode unicode-fonts web-mode use-package smartparens projectile prettier-js php-mode magit lsp-ui json-mode js2-mode flycheck-clj-kondo flycheck-cfn company clj-refactor cfn-mode)))
-(custom-set-faces
- ;; custom-set-faces was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- )

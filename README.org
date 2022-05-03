@@ -23,10 +23,6 @@
     # JavaScript
     brew install node npm
     npm install -g eslint prettier
-
-    # PHP
-    brew install php composer
-    npm i intelephense -g
   #+end_src
   
   See [[file:init.el]]
