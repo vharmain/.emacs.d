@@ -100,6 +100,11 @@ transpositions to execute in sequence."
 (setq backup-directory-alist `((".*" . ,temporary-file-directory)))
 (setq auto-save-file-name-transforms `((".*" ,temporary-file-directory t)))
 
+(use-package expand-region
+  :ensure t
+  :bind (("C-M-SPC" . er/expand-region)
+         ("C-M-<return>" . er/contract-region)))
+
 (use-package vertico
   :ensure t
   :init
@@ -319,7 +324,7 @@ Parse cfn-nag OUTPUT for cfn-nag CHECKER on a given BUFFER"
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
-   '(neil html-to-hiccup vertico code-review rainbow-mode unicode-fonts web-mode use-package smartparens projectile prettier-js php-mode magit lsp-ui json-mode js2-mode flycheck-clj-kondo flycheck-cfn company clj-refactor cfn-mode)))
+   '(expand-region neil html-to-hiccup vertico code-review rainbow-mode unicode-fonts web-mode use-package smartparens projectile prettier-js php-mode magit lsp-ui json-mode js2-mode flycheck-clj-kondo flycheck-cfn company clj-refactor cfn-mode)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
