@@ -109,6 +109,8 @@ transpositions to execute in sequence."
   :ensure t
   :init
   (vertico-mode)
+  :config
+  (setq vertico-sort-function 'vertico-sort-alpha)
 
   ;; Different scroll margin
   ;; (setq vertico-scroll-margin 0)
@@ -122,6 +124,19 @@ transpositions to execute in sequence."
   ;; Optionally enable cycling for `vertico-next' and `vertico-previous'.
   ;; (setq vertico-cycle t)
   )
+
+(use-package marginalia  
+  :ensure t
+  :bind
+  (:map minibuffer-local-map
+        ("M-A" . marginalia-cycle))  
+  :init (marginalia-mode))
+
+(use-package orderless
+  :ensure t
+  :custom
+  (completion-styles '(orderless basic))
+  (completion-category-overrides '((file (styles basic partial-completion)))))
 
 (use-package flyspell
   :ensure t
@@ -324,7 +339,7 @@ Parse cfn-nag OUTPUT for cfn-nag CHECKER on a given BUFFER"
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
-   '(expand-region neil html-to-hiccup vertico code-review rainbow-mode unicode-fonts web-mode use-package smartparens projectile prettier-js php-mode magit lsp-ui json-mode js2-mode flycheck-clj-kondo flycheck-cfn company clj-refactor cfn-mode)))
+   '(marginalia orderless expand-region neil html-to-hiccup vertico code-review rainbow-mode unicode-fonts web-mode use-package smartparens projectile prettier-js php-mode magit lsp-ui json-mode js2-mode flycheck-clj-kondo flycheck-cfn company clj-refactor cfn-mode)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
