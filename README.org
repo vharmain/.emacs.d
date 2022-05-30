@@ -9,7 +9,7 @@
     # Junk that needs to be installed outside Emacs
     # ispell
     brew install ispell
-    
+
     # Cloudformation
     brew install ruby brew-gem cfn-lint
     brew gem install cfn-nag
@@ -23,6 +23,13 @@
     # JavaScript
     brew install node npm
     npm install -g eslint prettier
+
+    # Python
+    brew install pyright
+    brew install black
+
+    # Forth
+    brew install gforth
   #+end_src
   
   See [[file:init.el]]

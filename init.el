@@ -317,7 +317,9 @@ Parse cfn-nag OUTPUT for cfn-nag CHECKER on a given BUFFER"
 (use-package web-mode
   :ensure t)
 
-;; See also section 'LSP'
+;;; Forth ;;;
+(use-package forth-mode
+  :ensure t)
 
 ;;; LSP ;;;
 
