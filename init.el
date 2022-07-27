@@ -71,6 +71,15 @@ transpositions to execute in sequence."
    "*jet error buffer*"
    t))
 
+;; Workaround to "too many open files"
+(defun file-notify-rm-all-watches ()
+  "Remove all existing file notification watches from Emacs."
+  (interactive)
+  (maphash
+   (lambda (key _value)
+     (file-notify-rm-watch key))
+   file-notify-descriptors))
+
 ;;; Global configs and keybindings ;;;
 
 ;; Never tabs, always spaces
