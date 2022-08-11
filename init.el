@@ -71,6 +71,17 @@ transpositions to execute in sequence."
    "*jet error buffer*"
    t))
 
+(defun jet-edn->pretty-json ()
+  (interactive)
+  (shell-command-on-region
+   (region-beginning)
+   (region-end)
+   "jet --to json --pretty --edn-reader-opts '{:default tagged-literal}'"
+   (current-buffer)
+   t
+   "*jet error buffer*"
+   t))
+
 ;; Workaround to "too many open files"
 (defun file-notify-rm-all-watches ()
   "Remove all existing file notification watches from Emacs."
@@ -104,6 +115,7 @@ transpositions to execute in sequence."
 (show-paren-mode t)
 (delete-selection-mode t)
 (projectile-mode t)
+(add-hook 'before-save-hook 'whitespace-cleanup)
 
 ;; Store all backup and autosave files in the tmp dir
 (setq backup-directory-alist `((".*" . ,temporary-file-directory)))
@@ -112,7 +124,7 @@ transpositions to execute in sequence."
 (use-package expand-region
   :ensure t
   :bind (("C-M-SPC" . er/expand-region)
-         ("C-M-<return>" . er/contract-region)))
+         ("C-M-<backspace>" . er/contract-region)))
 
 (use-package vertico
   :ensure t
@@ -134,11 +146,11 @@ transpositions to execute in sequence."
   ;; (setq vertico-cycle t)
   )
 
-(use-package marginalia  
+(use-package marginalia
   :ensure t
   :bind
   (:map minibuffer-local-map
-        ("M-A" . marginalia-cycle))  
+        ("M-A" . marginalia-cycle))
   :init (marginalia-mode))
 
 (use-package orderless
@@ -280,7 +292,7 @@ Parse cfn-nag OUTPUT for cfn-nag CHECKER on a given BUFFER"
 
 (use-package neil
   :ensure t
-  :config 
+  :config
   (setq neil-prompt-for-version-p nil
         neil-inject-dep-to-project-p t))
 
