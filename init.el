@@ -49,38 +49,37 @@ transpositions to execute in sequence."
     (set-window-buffer this-win (current-buffer))
     (set-window-buffer (selected-window) this-buffer)))
 
-(defun jet-pretty-edn ()
-  (interactive)
+(defun cmd* (cmd errbuf)
+  "Call CMD interactively on active region and print errors to ERRBUF."
   (shell-command-on-region
    (region-beginning)
    (region-end)
-   "jet --pretty --edn-reader-opts '{:default tagged-literal}'"
+   cmd
    (current-buffer)
    t
-   "*jet error buffer*"
+   errbuf
    t))
+
+(defun jet-pretty-edn ()
+  "Pretty print edn on active region."
+  (interactive)
+  (cmd*
+   "jet --pretty --edn-reader-opts '{:default tagged-literal}'"
+   "*jet error buffer*"))
 
 (defun jet-json->pretty-edn ()
+  "Transform JSON on active region to pretty printed EDN."
   (interactive)
-  (shell-command-on-region
-   (region-beginning)
-   (region-end)
+  (cmd*
    "jet --from json --keywordize --pretty --edn-reader-opts '{:default tagged-literal}'"
-   (current-buffer)
-   t
-   "*jet error buffer*"
-   t))
+   "*jet error buffer*"))
 
 (defun jet-edn->pretty-json ()
+  "Transform EDN on active region to pretty printed JSON."
   (interactive)
-  (shell-command-on-region
-   (region-beginning)
-   (region-end)
+  (cmd*
    "jet --to json --pretty --edn-reader-opts '{:default tagged-literal}'"
-   (current-buffer)
-   t
-   "*jet error buffer*"
-   t))
+   "*jet error buffer*"))
 
 ;; Workaround to "too many open files"
 (defun file-notify-rm-all-watches ()
@@ -366,3 +365,17 @@ Parse cfn-nag OUTPUT for cfn-nag CHECKER on a given BUFFER"
 
 (provide 'init.el)
 ;;; init.el ends here
+(custom-set-variables
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(package-selected-packages
+   '(python-black lsp-pyright web-mode vertico use-package unicode-fonts smartparens rainbow-mode projectile prettier-js php-mode orderless neil marginalia lsp-ui json-mode js2-mode html-to-hiccup forth-mode flycheck-clj-kondo flycheck-cfn expand-region company code-review cfn-mode))
+ '(safe-local-variable-values '((cider-shadow-cljs-default-options . "app"))))
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ )
