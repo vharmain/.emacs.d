@@ -97,6 +97,7 @@ transpositions to execute in sequence."
 
 (setq mac-command-modifier 'meta)
 (setq mac-option-modifier 'super)
+(setq mac-function-modifier 'hyper)
 (setq ns-function-modifier 'hyper)
 (setq ns-right-alternate-modifier nil)
 
