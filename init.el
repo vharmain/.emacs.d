@@ -170,6 +170,9 @@ transpositions to execute in sequence."
 
 ;;; Global utils ;;;
 
+(use-package rg
+  :ensure t)
+
 (use-package projectile
   :ensure t
   :bind-keymap ("C-c p" . projectile-command-map))
@@ -372,7 +375,7 @@ Parse cfn-nag OUTPUT for cfn-nag CHECKER on a given BUFFER"
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
-   '(python-black lsp-pyright web-mode vertico use-package unicode-fonts smartparens rainbow-mode projectile prettier-js php-mode orderless neil marginalia lsp-ui json-mode js2-mode html-to-hiccup forth-mode flycheck-clj-kondo flycheck-cfn expand-region company code-review cfn-mode))
+   '(rg terraform-mode python-black lsp-pyright web-mode vertico use-package unicode-fonts smartparens rainbow-mode projectile prettier-js php-mode orderless neil marginalia lsp-ui json-mode js2-mode html-to-hiccup forth-mode flycheck-clj-kondo flycheck-cfn expand-region company code-review cfn-mode))
  '(safe-local-variable-values '((cider-shadow-cljs-default-options . "app"))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.

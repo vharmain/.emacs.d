@@ -30,6 +30,9 @@
 
     # Forth
     brew install gforth
+
+    # ripgrep
+    brew install ripgrep
   #+end_src
-  
+
   See [[file:init.el]]
