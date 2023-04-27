@@ -285,6 +285,11 @@ Parse cfn-nag OUTPUT for cfn-nag CHECKER on a given BUFFER"
                                    (alist-get 'file_results msg)))
                       (car (flycheck-parse-json output)))))))
 
+;;; Terraform ;;;
+
+(use-package terraform-mode
+  :ensure t)
+
 ;;; Clojure ;;;
 
 (use-package flycheck-clj-kondo
