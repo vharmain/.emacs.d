@@ -168,6 +168,18 @@ transpositions to execute in sequence."
    (org-mode . flyspell-mode)
    (markdown-mode . flyspell-mode)))
 
+(use-package langtool
+  :ensure t
+  :bind
+  (("C-c ge" . 'langtool-check)
+   ("C-c gd" . 'langtool-check-done)
+   ("C-c gp" . 'langtool-show-message-at-point)
+   ("C-c gr" . 'langtool-correct-buffer))
+  :config
+  (setq langtool-http-server-host "localhost")
+  (setq langtool-http-server-port 8981)
+  (setq langtool-default-language "en-US"))
+
 ;;; Global utils ;;;
 
 (use-package rg
